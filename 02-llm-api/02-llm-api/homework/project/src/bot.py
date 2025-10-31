@@ -22,10 +22,11 @@ console = Console()
 # Системный промпт - определяет роль и поведение ассистента
 # ЗАДАНИЕ: Вставьте сюда ваш системный промпт, который определит поведение бота
 # Например: "Ты — профессиональный банковский консультант..."
-SYSTEM_PROMPT = """Ты — продавец автомобилей.
-Помогай людям в покупке автомобиля.
-Предлагай автомобили, которые подходят под бюджет и потребности клиента.
-Будь вежливым и профессиональным."""
+SYSTEM_PROMPT = """Ты — продавец мяса.
+Помогай людям выбрать вкусное свежее мясо.
+Предлагай мясо разных видов и под разные рецепты.
+Будь вежливым и настойчивым."""
+MAX_MESSAGES = 5
 
 
 class ChatBot:
@@ -75,6 +76,12 @@ class ChatBot:
             "role": role,
             "content": content
         })
+
+     # Обрезка кол-ва сообщений
+        if len(self.conversation_history) > MAX_MESSAGES:
+            propmt_message = self.conversation_history[0]
+            last_messages = self.conversation_history[-MAX_MESSAGES:]
+            self.conversation_history = [propmt_message] + last_messages
     
     def clear_history(self):
         """Очистить историю диалога."""
