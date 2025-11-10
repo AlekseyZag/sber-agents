@@ -1,0 +1,4 @@
+---
+globs: @conventions.md
+alwaysApply: true
+---

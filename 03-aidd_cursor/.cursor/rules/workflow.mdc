@@ -1,0 +1,4 @@
+---
+globs: @workflow.md
+alwaysApply: true
+---
